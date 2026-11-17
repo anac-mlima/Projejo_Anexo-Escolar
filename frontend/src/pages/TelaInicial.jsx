@@ -19,7 +19,7 @@ const icones = [
   { img: "/img/icone11.png", nome: "Atividades Complementares" },
 ];
 
-const fotos = ["/img/escola1.jpg", "/img/escola2.jpg", "/img/escola3.jpeg"];
+const fotos = ["/img/escola1.jpg", "/img/escola2.jpg", "/img/escola3.jpg"];
 
 export default function TelaInicial() {
   return (
