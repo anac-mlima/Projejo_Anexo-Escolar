@@ -838,6 +838,40 @@ html { scroll-behavior: smooth; }
     height: 300px;
   }
 }
+/* ==========================================================================
+   FREQUÊNCIA (chamada e semáforo)
+   ========================================================================== */
+.freq-regras { margin: 0 0 1rem; color: var(--suave); font-size: .9rem; }
+.freq-barra { display: flex; flex-wrap: wrap; gap: .75rem; align-items: end; margin-bottom: 1rem; }
+.freq-barra label { display: flex; flex-direction: column; gap: .3rem; font-size: .9rem; font-weight: 600; }
+.freq-barra input[type='date'] { width: auto; }
+
+.semaforo { display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; font-weight: 700; white-space: nowrap; }
+.semaforo::before { content: ''; width: .85rem; height: .85rem; border-radius: 50%; background: currentColor; }
+.semaforo.freq-verde    { color: #2e9e4f; }
+.semaforo.freq-amarelo  { color: #d99a00; }
+.semaforo.freq-vermelho { color: #d6293e; }
+
+.chamada { display: inline-flex; gap: .3rem; }
+.chamada button {
+  padding: .3rem .7rem;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  background: var(--papel);
+  color: var(--suave);
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.chamada button.ativo-presente { background: #eef7e8; border-color: var(--verde-crescer); color: var(--verde-escuro); }
+.chamada button.ativo-falta    { background: #fde6f0; border-color: var(--rosa-crescer); color: var(--rosa-escuro); }
+
+tr.linha-vermelho td { background: #fff5f6; }
+tr.linha-amarelo td  { background: #fffbea; }
+
+.historico-dias { margin-top: 1.5rem; }
+.historico-dias summary { cursor: pointer; font-weight: 700; margin-bottom: .6rem; }
 
 @media (max-width: 640px) {
   .linha { grid-template-columns: 1fr; }

@@ -10,7 +10,8 @@ import arquivosRouter from './routes/arquivos.js';
 import turmasRouter from './routes/turmas.js';
 import usuariosRouter from './routes/usuarios.js';
 import { HttpError } from './utils/erros.js';
-
+import frequenciaRouter from './routes/frequencia.js';
+import professoresRouter from './routes/professores.js';
 
 
 const app = express();
@@ -43,6 +44,8 @@ app.get('/api/me', (req, res) => {
 app.use('/api/turmas', turmasRouter);
 app.use('/api/alunos', alunosRouter);
 app.use('/api/usuarios', usuariosRouter);
+app.use('/api/professores', professoresRouter);
+app.use('/api/frequencia', frequenciaRouter);
 
 app.use((req, res) => res.status(404).json({ erro: 'Rota não encontrada.' }));
 

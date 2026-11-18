@@ -45,6 +45,11 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Chamada (presença/falta): só a API Node lê e grava, já filtrando por professor.
+    match /frequencias/{id} {
+      allow read, write: if false;
+    }
+    
     // Qualquer outra coisa: bloqueada.
     match /{document=**} {
       allow read, write: if false;

@@ -26,6 +26,21 @@ export async function buscarAluno(id) {
   return serializar(snap);
 }
 
+/** Professor ativo (usado ao vincular um professor a uma turma). */
+export async function buscarProfessor(id) {
+  if (typeof id !== 'string' || !ID_SEGURO.test(id)) throw new HttpError(400, 'Informe um professor válido.');
+  const snap = await db.collection('usuarios').doc(id).get();
+  if (!snap.exists || snap.data().perfil !== 'professor') throw new HttpError(400, 'Professor não encontrado.');
+  if (snap.data().ativo === false) throw new HttpError(400, 'Este professor está com o acesso desativado.');
+  return { uid: snap.id, ...snap.data() };
+}
+
+/** Map uid -> nome de todos os professores (para mostrar o professor de cada turma). */
+export async function mapaDeProfessores() {
+  const snap = await db.collection('usuarios').where('perfil', '==', 'professor').get();
+  return new Map(snap.docs.map((d) => [d.id, d.data().nome]));
+}
+
 /** Map id -> nome da turma (a coleção é pequena, então 1 leitura resolve a listagem toda). */
 export async function mapaDeTurmas() {
   const snap = await db.collection('turmas').get();

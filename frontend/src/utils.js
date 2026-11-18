@@ -3,7 +3,28 @@ import { useEffect, useState } from 'react';
 export const PERFIL_ROTULO = {
   admin_geral: 'Administrador Geral',
   admin_secretario: 'Administrador Secretário',
+  professor: 'Professor',
 };
+
+export const SITUACAO_ROTULO = {
+  verde: 'Regular',
+  amarelo: 'Atenção',
+  vermelho: 'Limite excedido',
+};
+
+/** Semáforo de faltas, com os números das regras que a API devolve. */
+export function situacaoPorFaltas(faltas, regras) {
+  if (faltas > regras.limiteFaltas) return 'vermelho';
+  if (faltas >= regras.alertaFaltas) return 'amarelo';
+  return 'verde';
+}
+
+/** Data de hoje no fuso do navegador, como "AAAA-MM-DD". */
+export function hojeLocal() {
+  const d = new Date();
+  const dois = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${dois(d.getMonth() + 1)}-${dois(d.getDate())}`;
+}
 
 export const STATUS_OPCOES = [
   { valor: 'em_andamento', rotulo: 'Em andamento' },

@@ -4,6 +4,7 @@ import { auth, db } from '../firebase.js';
 export const PERFIS = {
   GERAL: 'admin_geral',
   SECRETARIO: 'admin_secretario',
+  PROFESSOR: 'professor',
 };
 
 /**
