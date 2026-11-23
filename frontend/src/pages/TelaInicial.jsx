@@ -3,8 +3,7 @@ import SiteHeader from "../components/SiteHeader";
 import SiteSection from "../components/SiteSection";
 import SiteFooter from "../components/SiteFooter";
 import Carrossel from "../components/Carrossel";
-import { FaBook, FaChalkboardTeacher, FaSchool } from "react-icons/fa";
-
+import { FaBook, FaChalkboardTeacher, FaSchool, FaSignInAlt } from "react-icons/fa";
 
 const features = [
   { icone: FaBook, titulo: "Educação de Qualidade", texto: "Metodologias modernas para potencializar o aprendizado." },
@@ -30,7 +29,10 @@ export default function TelaInicial() {
         <div className="hero-content">
           <h2>Bem-vindo ao Colégio Crescer</h2>
           <p>Educação para transformar vidas</p>
-          <Link to="/login" className="btn">Login</Link>
+          <Link to="/login" className="hero-login-btn">
+            <FaSignInAlt aria-hidden="true" />
+            <span>Login</span>
+          </Link>
         </div>
       </section>
 
